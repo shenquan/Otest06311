@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+                                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+    <LinearLayout 
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/homepage_casehistory_one"
+            android:layout_marginLeft="10dp"
+            
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="口腔科"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+                                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+                                <LinearLayout 
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/homepage_casehistory_two"
+            android:layout_marginLeft="10dp"
+            
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="三高类"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+                                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+                                <LinearLayout 
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/homepage_casehistory_three"
+            android:layout_marginLeft="10dp"
+            
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="心脏类"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+                                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+                                <LinearLayout 
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/homepage_casehistory_four"
+            android:layout_marginLeft="10dp"
+            
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="骨科"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+                                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+                                <LinearLayout 
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/homepage_casehistory_six"
+            android:layout_marginLeft="10dp"
+            
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内科"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+                                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+                                <LinearLayout 
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/homepage_casehistory_seven"
+            android:layout_marginLeft="10dp"
+            
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="神经科"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+                                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+
+                        android:background="#C4C4C4" />
+</LinearLayout>

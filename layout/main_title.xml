@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_t"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#17B4EC"
+                android:orientation="horizontal">
+				<LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+   					 <ImageView
+                        android:layout_marginTop="5dp"
+   					     android:layout_width="36dp"
+   					     android:layout_height="35dp"
+   					     android:layout_gravity="center_horizontal"
+   					     android:src="@drawable/main_title_my" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/exam_explaindetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="选医院"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="3px"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="#D7D7D7" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="找专家"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="3px"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:background="#D7D7D7" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="专家问答"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="3px"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:background="#D7D7D7" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="人才"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="3px"
+                        android:layout_marginTop="5dp"
+                        android:background="#D7D7D7" />
+                </LinearLayout>
+            </LinearLayout>
+
+</LinearLayout>

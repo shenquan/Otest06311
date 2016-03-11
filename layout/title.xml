@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="#17B4EC"
+    android:layout_height="50dp"
+     >
+
+     <ImageView
+         android:layout_marginTop="5dp"
+         android:layout_marginLeft="10dp"
+         android:layout_width="40dp"
+         android:layout_height="40dp"
+         android:src="@drawable/main_title_my" />
+
+     <TextView
+         android:id="@+id/title"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="标题"
+         android:layout_centerHorizontal="true"
+         android:layout_centerInParent="true"
+         android:textColor="#FFFFFF"
+         android:textSize="20sp" />
+
+</RelativeLayout>
