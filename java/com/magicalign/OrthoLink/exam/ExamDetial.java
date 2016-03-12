@@ -1,7 +1,6 @@
 package com.magicalign.OrthoLink.exam;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +9,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -24,6 +21,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.magicalign.OrthoLink.CustomView.CustomScrollView;
 import com.magicalign.OrthoLink.bean.Question;
 import com.magicalign.OrthoLink.handlermessage.MsgWhat;
 import com.magicalign.OrthoLink.network.NetworkService;
@@ -49,7 +47,8 @@ public class ExamDetial extends Activity {
     private List<String> OptionList;
     private int num = 1;
     private LayoutInflater inflater;
-    private LinearLayout mLlExamView, mLlBelowQuestion, mLlBeforeConnectServer;
+    private LinearLayout mLlBelowQuestion, mLlBeforeConnectServer;
+    private LinearLayout mLlExamView;
     private RadioButton radioA, radioB, radioC, radioD, radioE, radioF, radioG;
     private RadioGroup radioGroup;
     private int answer = 0;
@@ -59,7 +58,8 @@ public class ExamDetial extends Activity {
     private ExamListRecv examListRecv = new ExamListRecv();
     private RelativeLayout mRl;
     private ScrollView mSv;
-    private ProgressBar mPb;
+    private CustomScrollView mCsv;
+
     //保证弹出的Toast唯一
     private Toast mToast = null;
 
@@ -79,11 +79,13 @@ public class ExamDetial extends Activity {
         intHandler();
 
         //加载好试题之前，先隐藏内容界面
-        mSv.setVisibility(View.GONE);
-        
+//        mSv.setVisibility(View.GONE);//测试才注释掉
+
         // 连接服务器
         connectServer();
-        
+        //测试才加上
+        mLlBeforeConnectServer.setVisibility(View.GONE);
+        init();
 
     }
     /**
@@ -117,7 +119,7 @@ public class ExamDetial extends Activity {
 
                     //加载好试题之后，消去对话框
 //                    if (QuestionList.size() == 2) {
-                        mLoadTwoQuestionsHandler.sendEmptyMessage(MsgWhat.LOAD_TWO_QUESTION);
+                    mLoadTwoQuestionsHandler.sendEmptyMessage(MsgWhat.LOAD_TWO_QUESTION);
 //                    }
                 }
 
@@ -129,15 +131,11 @@ public class ExamDetial extends Activity {
         mLoadTwoQuestionsHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-            	//加载好试题之后
+                //加载好试题之后
                 if (msg.what == MsgWhat.LOAD_TWO_QUESTION) {
-//                    mLlBeforeConnectServer.setVisibility(View.GONE);
-                	
-                    mLlBeforeConnectServer.setVisibility(8);
+                    mLlBeforeConnectServer.setVisibility(View.GONE);
                     init();
-                    mSv.setVisibility(0);
-//                    mSv.setVisibility(View.GONE);
-//                init();
+                    mSv.setVisibility(View.VISIBLE);
                 }
             }
         };
@@ -146,19 +144,18 @@ public class ExamDetial extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == MsgWhat.CONNECT_SERVER_SUCCESS) {
-                    //连接界面设置为不可见，显示题目栏可见
                     //连接成功什么都不做，当试题下载好之后再做
 //                    mTvServerConnectFail.setText("连接成功");
 //                    showToast("连接成功", 200);
-//                    mLlBeforeConnectServer.setVisibility(View.GONE);
-//                    mSv.setVisibility(View.VISIBLE);
-                   
+
 
                 } else if (msg.what == MsgWhat.CONNECT_SERVER_FAIL) {
 //                    showToast("服务器连接失败服务器连接失败", 200);
                     //题目界面不可见，连接界面可见，并重新设置连接信息或者点击重试
+                    /*
+                    测试注释掉
                     mSv.setVisibility(View.GONE);
-                    mTvServerConnectFail.setText("当前网络不可用，请检查网络");
+                    mTvServerConnectFail.setText("当前网络不可用，请检查网络");*/
                 }
             }
         };
@@ -169,7 +166,7 @@ public class ExamDetial extends Activity {
     public void init() {
         // 设置标题
 
-//        mSv.setVisibility(View.VISIBLE);
+
         mLlBelowQuestion.setVisibility(View.INVISIBLE);
 
         radioA.setEnabled(true);
@@ -201,35 +198,35 @@ public class ExamDetial extends Activity {
         radioB.setText(QuestionList.get(QuestionsIndex).getOptionB());
 
         if (QuestionList.get(QuestionsIndex).getOptionC() == null) {
-            radioC.setVisibility(View.INVISIBLE);
+            radioC.setVisibility(View.GONE);
         } else {
             radioC.setText(QuestionList.get(QuestionsIndex).getOptionC());
             radioC.setVisibility(View.VISIBLE);
         }
 
         if (QuestionList.get(QuestionsIndex).getOptionD() == null) {
-            radioD.setVisibility(View.INVISIBLE);
+            radioD.setVisibility(View.GONE);
         } else {
             radioD.setText(QuestionList.get(QuestionsIndex).getOptionD());
             radioD.setVisibility(View.VISIBLE);
         }
 
         if (QuestionList.get(QuestionsIndex).getOptionE() == null) {
-            radioE.setVisibility(View.INVISIBLE);
+            radioE.setVisibility(View.GONE);
         } else {
             radioE.setText(QuestionList.get(QuestionsIndex).getOptionE());
             radioE.setVisibility(View.VISIBLE);
         }
 
         if (QuestionList.get(QuestionsIndex).getOptionF() == null) {
-            radioF.setVisibility(View.INVISIBLE);
+            radioF.setVisibility(View.GONE);
         } else {
             radioF.setText(QuestionList.get(QuestionsIndex).getOptionF());
             radioF.setVisibility(View.VISIBLE);
         }
 
         if (QuestionList.get(QuestionsIndex).getOptionG() == null) {
-            radioG.setVisibility(View.INVISIBLE);
+            radioG.setVisibility(View.GONE);
         } else {
             radioG.setText(QuestionList.get(QuestionsIndex).getOptionG());
             radioG.setVisibility(View.VISIBLE);
@@ -326,7 +323,7 @@ public class ExamDetial extends Activity {
                     if (resultTrueOrFalse()) {
                         radioC.setTextColor(getResources().getColor(
                                 R.color.exam_true_option));
-//						delayTimeAfterTrue();	
+//						delayTimeAfterTrue();
 
                     } else {
 
@@ -346,7 +343,7 @@ public class ExamDetial extends Activity {
                     if (resultTrueOrFalse()) {
                         radioD.setTextColor(getResources().getColor(
                                 R.color.exam_true_option));
-//						delayTimeAfterTrue();	
+//						delayTimeAfterTrue();
 
                     } else {
 
@@ -367,7 +364,7 @@ public class ExamDetial extends Activity {
                     if (resultTrueOrFalse()) {
                         radioE.setTextColor(getResources().getColor(
                                 R.color.exam_true_option));
-//						delayTimeAfterTrue();	
+//						delayTimeAfterTrue();
 
                     } else {
 
@@ -388,7 +385,7 @@ public class ExamDetial extends Activity {
                     if (resultTrueOrFalse()) {
                         radioF.setTextColor(getResources().getColor(
                                 R.color.exam_true_option));
-//						delayTimeAfterTrue();			
+//						delayTimeAfterTrue();
 
                     } else {
 
@@ -409,7 +406,7 @@ public class ExamDetial extends Activity {
                     if (resultTrueOrFalse()) {
                         radioG.setTextColor(getResources().getColor(
                                 R.color.exam_true_option));
-//						delayTimeAfterTrue();	
+//						delayTimeAfterTrue();
 
                     } else {
 
@@ -424,7 +421,7 @@ public class ExamDetial extends Activity {
     }
 
     private void connectServer() {
-        /*Question question = new Question();
+        Question question = new Question();
         question.setAnswer(2);
         question.setOptionA("A:刷头小，转动自如");
         question.setOptionB("B:刷毛10-12束长");
@@ -443,7 +440,19 @@ public class ExamDetial extends Activity {
         question1.setOptionE("E：临牙牙冠颊面");
         question1.setQuestion("基牙无倒凹时，箭头卡的箭头应卡在：");
         question1.setExplain("基牙无倒凹时，箭头卡的箭头应卡在两临牙楔状隙内");
-        QuestionList.add(question1);*/
+        QuestionList.add(question1);
+
+        Question question2 = new Question();
+        question2.setAnswer(2);
+        question2.setOptionA("A：使组织受压均匀");
+        question2.setOptionB("B：印模材料量要多");
+        question2.setOptionC("C：边缘要圆钝，有一定厚度");
+        question2.setOptionD("D：尽可能扩大印模面积");
+        question2.setOptionE("E：采取功能性印模");
+        question2.setQuestion("取印模的要求不包含：");
+        question2
+                .setExplain("取印模要求取适量的印模材料，制取功能性印模，在取的过程中应使组织均匀受压，边缘要圆钝，有一定厚度，并尽可能扩大印模面积");
+        QuestionList.add(question2);
 
         new Thread(new Runnable() {
             @Override
@@ -454,6 +463,7 @@ public class ExamDetial extends Activity {
                 //连接成功
                 if (NetworkService.getInstance().getIsConnected()) {
                     mServerConnectStateHandler.sendEmptyMessage(MsgWhat.CONNECT_SERVER_SUCCESS);
+                    //向服务器端发送请求数据
                     GetExamination getExamination = GetExamination.newBuilder()
                             .setExaminationTypeId(1).setExaminationForm(1).build();
                     NetworkService.getInstance().getExam(getExamination);
@@ -463,23 +473,6 @@ public class ExamDetial extends Activity {
                 }
             }
         }).start();
-
-
-
-
-		/*
-
-		Question question2 = new Question();
-		question2.setAnswer(2);
-		question2.setOptionA("A：使组织受压均匀");
-		question2.setOptionB("B：印模材料量要多");
-		question2.setOptionC("C：边缘要圆钝，有一定厚度");
-		question2.setOptionD("D：尽可能扩大印模面积");
-		question2.setOptionE("E：采取功能性印模");
-		question2.setQuestion("取印模的要求不包含：");
-		question2
-				.setExplain("取印模要求取适量的印模材料，制取功能性印模，在取的过程中应使组织均匀受压，边缘要圆钝，有一定厚度，并尽可能扩大印模面积");
-		QuestionList.add(question2);*/
 
     }
 
@@ -496,10 +489,16 @@ public class ExamDetial extends Activity {
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         mLlBelowQuestion = (LinearLayout) findViewById(R.id.layout_below_question);
         mLlBeforeConnectServer = (LinearLayout) findViewById(R.id.before_connect_server);
+
         mLlExamView = (LinearLayout) findViewById(R.id.examlv);
-        mLlExamView.setLongClickable(true);
-        mLlExamView.setOnTouchListener(new mGestureListener(this));
-        mPb = (ProgressBar)findViewById(R.id.pb);
+        mCsv = (CustomScrollView) findViewById(R.id.sv);
+
+        //此句不能忘，否则onFling左右滑动不起作用
+        /*mLlExamView.setLongClickable(true);
+        mLlExamView.setOnTouchListener(new mGestureListener(this));*/
+
+        mCsv.setLongClickable(true);
+        mCsv.setOnTouchListener(new mGestureListener(this));
 
         ExamAnswer = (TextView) findViewById(R.id.exam_answer);
         ExamAnswerDetail = (TextView) findViewById(R.id.exam_answer_detial);
@@ -509,20 +508,9 @@ public class ExamDetial extends Activity {
         mSv = (ScrollView) findViewById(R.id.sv);
         ExamType.setText(Title);
 
-        //显示加载信息的dialog
-//		downloadQuestionDialog();
-
 
     }
 
-    //加载信息的进度条
-    private void downloadQuestionDialog(String str) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(str)
-                .create()
-                .show();
-
-    }
 
     private boolean resultTrueOrFalse() {
         QuestionList.get(QuestionsIndex).setSelectAnswer(answer);
@@ -676,10 +664,10 @@ public class ExamDetial extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals("EXAMLIST")) {
-            	System.out.println("jkj");
                 mServerSendMsgHandler.sendEmptyMessage(MsgWhat.SERVER_CONNNECT_SUCCESS_BROADCAST);
             }
         }
     }
+
 
 }
