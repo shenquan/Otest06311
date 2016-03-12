@@ -49,10 +49,13 @@ public class ClientListenThread extends Thread {
 					case GlobalMsgTypes.msgGetExamination:
 						byte[] getExamBytes = new byte[msgSize];
 
+						//读取一定数量的字节存入到缓冲区数组getExamBytes中
 						inputStream.read(getExamBytes);
 
+						//将流解析为对象
 						ExaminationList eList = ExaminationList
 								.parseFrom(getExamBytes);
+						//在这里初始化eList
 						ExamDetial.eList = eList;
 						Intent intent = new Intent("EXAMLIST");
 						mContext.sendBroadcast(intent);
