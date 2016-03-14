@@ -79,13 +79,13 @@ public class ExamDetial extends Activity {
         intHandler();
 
         //加载好试题之前，先隐藏内容界面
-//        mSv.setVisibility(View.GONE);//测试才注释掉
+        mSv.setVisibility(View.GONE);
 
         // 连接服务器
         connectServer();
-        //测试才加上
+        /*//测试才加上
         mLlBeforeConnectServer.setVisibility(View.GONE);
-        init();
+        init();*/
 
     }
     /**
@@ -133,6 +133,7 @@ public class ExamDetial extends Activity {
             public void handleMessage(Message msg) {
                 //加载好试题之后
                 if (msg.what == MsgWhat.LOAD_TWO_QUESTION) {
+                    //注意顺序
                     mLlBeforeConnectServer.setVisibility(View.GONE);
                     init();
                     mSv.setVisibility(View.VISIBLE);
@@ -152,10 +153,9 @@ public class ExamDetial extends Activity {
                 } else if (msg.what == MsgWhat.CONNECT_SERVER_FAIL) {
 //                    showToast("服务器连接失败服务器连接失败", 200);
                     //题目界面不可见，连接界面可见，并重新设置连接信息或者点击重试
-                    /*
-                    测试注释掉
+                    //网络不通时测试注释掉
                     mSv.setVisibility(View.GONE);
-                    mTvServerConnectFail.setText("当前网络不可用，请检查网络");*/
+                    mTvServerConnectFail.setText("当前网络不可用，请检查网络");
                 }
             }
         };
@@ -421,7 +421,7 @@ public class ExamDetial extends Activity {
     }
 
     private void connectServer() {
-        Question question = new Question();
+        /*Question question = new Question();
         question.setAnswer(2);
         question.setOptionA("A:刷头小，转动自如");
         question.setOptionB("B:刷毛10-12束长");
@@ -452,7 +452,7 @@ public class ExamDetial extends Activity {
         question2.setQuestion("取印模的要求不包含：");
         question2
                 .setExplain("取印模要求取适量的印模材料，制取功能性印模，在取的过程中应使组织均匀受压，边缘要圆钝，有一定厚度，并尽可能扩大印模面积");
-        QuestionList.add(question2);
+        QuestionList.add(question2);*/
 
         new Thread(new Runnable() {
             @Override
