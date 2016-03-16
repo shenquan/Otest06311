@@ -79,13 +79,13 @@ public class ExamDetial extends Activity {
         intHandler();
 
         //加载好试题之前，先隐藏内容界面
-        mSv.setVisibility(View.GONE);
+//        mSv.setVisibility(View.GONE);
 
         // 连接服务器
         connectServer();
-        /*//测试才加上
+        //测试才加上
         mLlBeforeConnectServer.setVisibility(View.GONE);
-        init();*/
+        init();
 
     }
     /**
@@ -154,7 +154,7 @@ public class ExamDetial extends Activity {
 //                    showToast("服务器连接失败服务器连接失败", 200);
                     //题目界面不可见，连接界面可见，并重新设置连接信息或者点击重试
                     //网络不通时测试注释掉
-                    mSv.setVisibility(View.GONE);
+//                    mSv.setVisibility(View.GONE);
                     mTvServerConnectFail.setText("当前网络不可用，请检查网络");
                 }
             }
@@ -421,14 +421,16 @@ public class ExamDetial extends Activity {
     }
 
     private void connectServer() {
-        /*Question question = new Question();
+        Question question = new Question();
         question.setAnswer(2);
         question.setOptionA("A:刷头小，转动自如");
         question.setOptionB("B:刷毛10-12束长");
         question.setOptionC("C:刷毛较短，顶端圆钝");
         question.setOptionD("D:刷毛密可清楚菌斑");
         question.setQuestion("合格牙具应具有的特点不包括：");
-        question.setExplain("第一题原因基牙无倒凹时，箭头卡的箭头应卡在两临牙楔状隙内基牙无倒凹时，箭头卡的箭头应卡在两临牙楔状隙内");
+        question.setExplain("第一题原因基牙无倒凹时，箭头卡的箭头应卡在两临牙楔状隙内基牙无倒凹时，" +
+                "箭头卡的箭头应卡在两临牙楔状隙内箭头卡的箭头应卡在两临牙楔状隙内基牙无倒凹时，" +
+                "箭头卡的箭头应卡在两临牙楔状隙内");
         QuestionList.add(question);
 
         Question question1 = new Question();
@@ -451,8 +453,9 @@ public class ExamDetial extends Activity {
         question2.setOptionE("E：采取功能性印模");
         question2.setQuestion("取印模的要求不包含：");
         question2
-                .setExplain("取印模要求取适量的印模材料，制取功能性印模，在取的过程中应使组织均匀受压，边缘要圆钝，有一定厚度，并尽可能扩大印模面积");
-        QuestionList.add(question2);*/
+                .setExplain("取印模要求取适量的印模材料，制取功能性印模，在取的过程中应使组织均匀" +
+                        "受压，边缘要圆钝，在取的过程中应使组织均匀受压，边缘要圆钝，有一定厚度，并尽可能扩大印模面积");
+        QuestionList.add(question2);
 
         new Thread(new Runnable() {
             @Override

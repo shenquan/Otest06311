@@ -17,7 +17,7 @@ public class GestureListener extends SimpleOnGestureListener implements
     /**
      * 左右滑动的最短距离
      */
-    private int distance = 100;
+    private int distance = 240;
     /**
      * 左右滑动的最大速度
      */
